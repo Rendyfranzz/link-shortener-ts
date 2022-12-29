@@ -5,7 +5,7 @@ import prisma from '../prisma/prisma';
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const linkid = JSON.stringify(context.query.link)
+    const linkid:string = String(context.query.link)
     const url = await prisma.link.findUnique({
         where: {
             customLink: linkid

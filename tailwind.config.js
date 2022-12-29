@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const { fontFamily } = require('tailwindcss/defaultTheme');
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -7,6 +8,9 @@ module.exports = {
   darkMode:"class",
   theme: {
     extend: {
+      fontFamily: {
+        primary: ['Inter', ...fontFamily.sans],
+      },
       colors: {
         primary: {
           // Customize it on globals.css :root
