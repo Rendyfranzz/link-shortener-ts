@@ -15,7 +15,6 @@ export default async function (req:any, res:any) {
   }
 
   try {
-    
     await prisma.link.create({
       data: {
         originalLink: originalLink,
