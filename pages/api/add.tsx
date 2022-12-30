@@ -1,6 +1,7 @@
+import { NextApiRequest, NextApiResponse } from "next"
 import prisma from "../../prisma/prisma"
 
-export default async function (req:any, res:any) {
+export default async function (req:NextApiRequest, res:NextApiResponse) {
   let { originalLink, customLink } = req.body.data
   if(!customLink){
     customLink = Math.random().toString(36).substring(2,8)
