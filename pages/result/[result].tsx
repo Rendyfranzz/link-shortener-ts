@@ -90,7 +90,7 @@ const Result: NextPage<{ url: Link }> = ({ url }) => {
         <Layout>
             <div className='flex flex-col space-y-8 justify-center items-center'>
             <div className='flex justify-center items-center space-x-4'>
-                <input className='input w-96 h3' value={host+url.customLink} readOnly autoFocus/>
+                <input className='input w-96 h3' value={`http://${host}/${url.customLink}`} readOnly autoFocus/>
                 <button onClick={handlerOnclick}>
                     <FaQrcode size={40}/>
                 </button>

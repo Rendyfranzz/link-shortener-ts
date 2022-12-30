@@ -1,8 +1,10 @@
 
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
+import { GetServerSideProps, GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router'
 import prisma from '../prisma/prisma';
 import { ClipLoader } from 'react-spinners';
+import { Link } from '../types';
+import * as react from "react"
 
 
 // export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -41,34 +43,41 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const res = await prisma.link.findUnique({
         where: {
             customLink: link
-        }
+        }, select: {
+            originalLink: true,
+            customLink: true,
+        },
     })
     return {
-        redirect: {
-            permanent: true,
-            destination: res?.originalLink,
+        props: {
+            url: res
         },
-        props: {},
     };
 
 }
 
-const Link = () => {
+const Link: NextPage<{ url: Link }> = ({ url }) => {
     const router = useRouter()
     if (router.isFallback) {
         return <div className='h-screen flex flex-col justify-center items-center'>
             <div>
-            <ClipLoader
-                color={"#fffff"}
-                loading={router.isFallback}
-                size={150}
-                aria-label="Loading Spinner"
-                data-testid="loader"
-            />
+                <ClipLoader
+                    color={"#fffff"}
+                    loading={router.isFallback}
+                    size={150}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
             </div>
             <p className='p'>Redirect to destination...</p>
-            </div>
+        </div>
     }
+
+    react.useEffect(() => {
+        if (url?.originalLink)
+            router.push(url.originalLink)
+    }, [])
+
     return (
         <div></div>
     )
