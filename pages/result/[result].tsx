@@ -80,14 +80,14 @@ const Result: NextPage<{ url: Url }> = ({ url }) => {
     }
     return (
         <Layout>
-            <div className='flex flex-col space-y-8 justify-center items-center'>
-                <div className='flex justify-center items-center space-x-4'>
+            <div className='flex flex-col space-y-8 justify-center items-center max-w-full'>
+                <div className='flex justify-center space-x-0 md:space-x-3 items-center w-full'>
                     <input className='input w-96 h3 p-2' value={`http://${host}/${url.customLink}`} readOnly autoFocus />
                     <CopyToClipboard content={`http://${host}/${url.customLink}`} />
                     <button onClick={handlerOnclick}>
                         <FaQrcode size={40} />
                     </button>
-                    <QrCode isOpen={isOpen} onclick={handlerOnclick} value={`http://${host}/${url.customLink}`} />
+                    <QrCode isOpen={isOpen} onclick={handlerOnclick} value={`http://${host}/${url.customLink}`} /> 
                 </div>
                 <div className='space-x-4 flex flex-row'>
                     {/* <Button color='bg-green-500' to={`http://${host}/${url.customLink}`}>Destination</Button> */}
