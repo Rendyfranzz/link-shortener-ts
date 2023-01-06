@@ -55,6 +55,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
             customLink: true,
         },
     })
+    if (!res) {
+        return {
+          notFound: true,
+        }
+      }
     return {
         props: {
             url: res
