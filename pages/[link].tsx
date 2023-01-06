@@ -2,9 +2,9 @@
 import { GetServerSideProps, GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router'
 import prisma from '../prisma/prisma';
-import { ClipLoader } from 'react-spinners';
-import { Link } from '../types';
+import { Url } from '../types';
 import * as react from "react"
+import { Loader } from '../components/Loader';
 
 
 // export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -56,21 +56,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 }
 
-const Link: NextPage<{ url: Link }> = ({ url }) => {
+const Link: NextPage<{ url: Url }> = ({ url }) => {
     const router = useRouter()
     if (router.isFallback) {
-        return <div className='h-screen flex flex-col justify-center items-center'>
-            <div>
-                <ClipLoader
-                    color={"#fffff"}
-                    loading={router.isFallback}
-                    size={150}
-                    aria-label="Loading Spinner"
-                    data-testid="loader"
-                />
-            </div>
-            <p className='p'>Redirect to destination...</p>
-        </div>
+        return <Loader loading={router.isFallback} state={"Redirect to destination..."}/>
     }
 
     react.useEffect(() => {

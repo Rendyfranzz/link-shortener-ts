@@ -1,4 +1,4 @@
-export interface Link {
+export interface Url {
     originalLink: string,
     customLink: string,
 }
