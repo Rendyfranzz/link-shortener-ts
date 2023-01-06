@@ -48,8 +48,8 @@ export const Form = () => {
             </div>
     }
     return (
-        <form className="flex flex-col w-1/2" onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex flex-row space-x-1 justify-between">
+        <form className="flex flex-col w-full md:w-1/2 px-2 md:px-0" onSubmit={handleSubmit(onSubmit)}>
+            <div className="flex flex-row space-x-1 justify-between items-center">
                 <input className={`input w-full ${errors?.originalLink?.message ? "border-red-600" : ""}`} {...register("originalLink", {
                     required: {
                         value: true,

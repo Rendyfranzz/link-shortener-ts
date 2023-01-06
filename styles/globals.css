@@ -55,6 +55,6 @@
     @apply font-primary text-sm md:text-base;
   }
   .input{
-    @apply h-10 border rounded-md
+    @apply h-8 md:h-10 border rounded-md
   }
 }

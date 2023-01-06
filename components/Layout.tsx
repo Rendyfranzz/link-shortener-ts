@@ -7,7 +7,7 @@ import {Header} from "./Header"
 export const Layout = ({children}:Page) => {
   return (
     <>
-    <div className="h-screen w-screen flex flex-col justify-center items-center">
+    <div className="h-screen flex flex-col justify-center items-center">
         <Header/>
         {children}
         <Footer/>

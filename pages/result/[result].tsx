@@ -76,7 +76,7 @@ const Result: NextPage<{ url: Url }> = ({ url }) => {
         setIsOpen(!isOpen)
     }
     if (router.isFallback) {
-        return <Loader loading={router.isFallback} state={"Please wait..."} />
+        return <Loader loading={router.isFallback} state={"Please wait..."} />  
     }
     return (
         <Layout>
@@ -90,10 +90,9 @@ const Result: NextPage<{ url: Url }> = ({ url }) => {
                     <QrCode isOpen={isOpen} onclick={handlerOnclick} value={`http://${host}/${url.customLink}`} />
                 </div>
                 <div className='space-x-4 flex flex-row'>
-                    <Button color='bg-green-500' to={`http://${host}/${url.customLink}`}>Destination</Button>
-                    <Link href={`http://${host}`}>
-                    <Button color='bg-blue-500' to={`http://${host}`}>Home</Button>
-                    </Link>
+                    {/* <Button color='bg-green-500' to={`http://${host}/${url.customLink}`}>Destination</Button> */}
+                    <a href={`http://${host}/${url.customLink}`} className={`block w-32 text-center h4 bg-opacity-50 hover:bg-opacity-100 bg-green-500 p-2 rounded-md shadow-md `}>Destination</a>
+                    <Button color='bg-blue-500' destinaton={`http://${host}`}>Home</Button>
                 </div>
             </div>
             <Container />

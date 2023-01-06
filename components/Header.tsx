@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes';
 export const Header = () => {
     const { theme, setTheme } = useTheme();
     return (
-            <div className='border-b-2 rounded-lg text-bold md:text-xl flex flex-row items-center w-screen justify-between fixed top-0 p-2'>
+            <div className='border-b-2 rounded-lg text-bold md:text-xl flex flex-row items-center w-full justify-between fixed top-0 p-2'>
                 <div>
                     <p className='h1 text-cyan-400'>Link Shortener</p>
                 </div>
