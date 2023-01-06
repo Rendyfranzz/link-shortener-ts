@@ -8,6 +8,8 @@ import { Button } from '../../components/Button';
 import * as react from "react"
 import {FaQrcode} from "react-icons/fa"
 import { QrCode } from '../../components/QrCode';
+import { CopyToClipboard } from '../../components/CopyToClipboard';
+import { Container } from '../../components/Toastify';
 // export const getServerSideProps: GetServerSideProps = async (context) => {
 
 //     const linkid: string = String(context.query.result)
@@ -90,7 +92,8 @@ const Result: NextPage<{ url: Link }> = ({ url }) => {
         <Layout>
             <div className='flex flex-col space-y-8 justify-center items-center'>
             <div className='flex justify-center items-center space-x-4'>
-                <input className='input w-96 h3' value={`http://${host}/${url.customLink}`} readOnly autoFocus/>
+                <input className='input w-96 h3 p-2' value={`http://${host}/${url.customLink}`} readOnly autoFocus/>
+                <CopyToClipboard content={`http://${host}/${url.customLink}`}/>
                 <button onClick={handlerOnclick}>
                     <FaQrcode size={40}/>
                 </button>
@@ -100,8 +103,8 @@ const Result: NextPage<{ url: Link }> = ({ url }) => {
             <Button color='bg-green-500' to={`http://${host}/${url.customLink}`}>Destination</Button>
             <Button color='bg-blue-500' to={`http://${host}`}>Home</Button>
             </div>
-
             </div>
+            <Container/>
         </Layout>
 
     )

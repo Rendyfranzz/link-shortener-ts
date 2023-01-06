@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import prisma from "../../prisma/prisma"
 
-export default async function (req:NextApiRequest, res:NextApiResponse) {
+export default async function add (req:NextApiRequest, res:NextApiResponse) {
   let { originalLink, customLink } = req.body.data
   if(!customLink){
     customLink = Math.random().toString(36).substring(2,8)
@@ -14,7 +14,6 @@ export default async function (req:NextApiRequest, res:NextApiResponse) {
   if (url) {
     return res.status(400).json({ msg: "Link sudah digunakan" })
   }
-
   try {
     await prisma.link.create({
       data: {

@@ -3,7 +3,7 @@ import QRCode from "react-qr-code";
 import * as react from 'react'
 interface Myprops {
     isOpen: boolean,
-    onclick: any,
+    onclick: ()=>void,
     value: string
 }
 export const QrCode: react.FC<Myprops> = (props) => {

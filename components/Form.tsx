@@ -1,12 +1,16 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import * as react from "react"
 
 
 export const Form = () => {
+    const [host,setHost] = react.useState("")
+    react.useEffect(()=>{
+        setHost(window.location.host)
+    },[])
     const { register, handleSubmit, formState: { errors } }: any = useForm();
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = react.useState(false)
     const router = useRouter()
 
     const onSubmit = async (value: string) => {
@@ -21,8 +25,6 @@ export const Form = () => {
                 alert(err.response.data.msg)
             }
         }
-
-
 
     }
     const handleClick = () => {
@@ -51,7 +53,11 @@ export const Form = () => {
                 }</span>
             </div>
             {
-                visible && <input {...register("customLink", { required: true })} className="input w-1/3" placeholder="Enter custom link" required />
+                visible &&
+                <div className="flex items-center space-x-2">
+                <p className="">{`${host}//`}</p>
+                 <input {...register("customLink", { required: true })} className="input w-1/3" placeholder="Enter custom link" required />
+                </div>
             }
         </form>
     )
